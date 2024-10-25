@@ -7,9 +7,11 @@ import './ShapeTable.css'
 interface ShapeTableProps extends ShapeModalProps{
   shapes: Shape[];
   onDeleteShape: (id: number) => void;
+  onRender: (shapes: Shape[]) => void;
+  onRenderSingle: (shape: Shape) => void;
 }
 
-const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape }) => {
+const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, onRender, onRenderSingle  }) => {
 
   const renderData = useCallback(() => (
     <TableBody>
@@ -22,20 +24,20 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape }
             <Button variant="outlined" color="error" onClick={() => onDeleteShape(shape.id)}>
               Delete
             </Button>
-            <Button variant="contained">
+            <Button variant="contained" onClick={() => onRenderSingle(shape)}>
               Render
             </Button>
           </TableCell>
         </TableRow>
       ))}
     </TableBody>
-  ), [onDeleteShape, shapes])
+  ), [onDeleteShape, onRenderSingle, shapes])
 
   return (
-    <>
+    <div className='table-container'>
       <Box className={'header-container'}>
         <ShapeModal onSave={onSave} />
-        <Button variant="contained">
+        <Button variant="contained" onClick={() => onRender(shapes)}>
           Render
         </Button>
       </Box>
@@ -52,7 +54,7 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape }
           {renderData()}
         </Table>
       </TableContainer>
-    </>
+    </div>
   );
 };
 

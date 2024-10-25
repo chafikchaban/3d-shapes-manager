@@ -1,3 +1,10 @@
+.table-container {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+    padding-left: 24rem;
+    padding-right: 24rem;
+}
+
 .header-container {
     display: flex;
     gap: 1rem;
