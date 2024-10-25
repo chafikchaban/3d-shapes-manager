@@ -1,0 +1,19 @@
+.container {
+    width: 400px;
+     padding: 1rem;
+     margin: auto;
+     background-color: white;
+     margin-top: 10%;
+}
+
+.field {
+    margin-top: 1rem;
+}
+
+.buttons-container {
+    display: flex !important;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+}

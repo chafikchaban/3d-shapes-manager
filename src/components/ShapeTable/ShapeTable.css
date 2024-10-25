@@ -1,0 +1,18 @@
+.header-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.table {
+    min-width: 650px;
+}
+
+.action-buttons-container {
+    display: flex !important;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
