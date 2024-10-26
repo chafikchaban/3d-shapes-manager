@@ -13,6 +13,11 @@
     margin-bottom: 1rem;
 }
 
+.table-empty {
+    padding: 2rem;
+    text-align: center;
+}
+
 .table {
     min-width: 650px;
 }
