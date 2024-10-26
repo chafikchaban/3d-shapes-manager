@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import { Shape } from '../../model';
 import './Canvas.css'
@@ -30,7 +30,7 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
         }
 
         shapes.forEach((shape, index) => {
-            let geometry: THREE.Geometry | THREE.BufferGeometry;
+            let geometry: THREE.BufferGeometry;
             switch (shape.type) {
                 case 'cube':
                     geometry = new THREE.BoxGeometry(2, 2, 2);
