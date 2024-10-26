@@ -1,32 +1,5 @@
 import { Mesh } from 'three';
-import { Shape, ShapeType } from "../model";
-
-export const initialShapes: Shape[] = [
-    {
-        id: 1,
-        name: 'Cube 1',
-        type: 'cube',
-        dimensions: { height: 2, width: 2, depth: 2 },
-    },
-    {
-        id: 2,
-        name: 'Sphere 1',
-        type: 'sphere',
-        dimensions: { radius: 2 },
-    },
-    {
-        id: 3,
-        name: 'Cylinder 1',
-        type: 'cylinder',
-        dimensions: { height: 2, radius: 2 },
-    },
-    {
-        id: 4,
-        name: 'Cone 1',
-        type: 'cone',
-        dimensions: { height: 2, radius: 2 },
-    }
-];
+import { ShapeType } from "../model";
 
 export const getDefaultShapeDimensions = (type: ShapeType) => {
     switch (type) {

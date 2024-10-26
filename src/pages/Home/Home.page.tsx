@@ -1,25 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Home.css'
 import { Shape } from '../../model';
-import { initialShapes } from '../../utils';
 import ShapeTable from '../../components/ShapeTable/ShapeTable.component';
 import Canvas from '../../components/Canvas/Canvas.component';
 
 
 export const HomePage: React.FC = () => {
-    const [shapes, setShapes] = useState<Shape[]>(initialShapes);
+    const [shapes, setShapes] = useState<Shape[]>([]);
     const [renderShapes, setRenderShapes] = useState<Shape[] | null>(null);
+
+    useEffect(() => {
+        // get shapes list from localStorage
+        const storedShapes = JSON.parse(localStorage.getItem('shapes') || '[]') || [];
+        setShapes(storedShapes);
+    }, []);
 
     const handleSaveShape = (shape: Omit<Shape, 'id'>) => {
         const newShape: Shape = {
             id: shapes.length,
             ...shape
         }
-        setShapes((prevShapes) => [...prevShapes, newShape]);
+        const newShapes = [...shapes, newShape];
+
+        // update shapes list in local state and localStorage
+        setShapes(newShapes);
+        localStorage.setItem('shapes', JSON.stringify(newShapes));
     };
 
     const handleDeleteShape = (id: number) => {
-        setShapes((prevShapes) => prevShapes.filter((shape) => shape.id !== id));
+        const updatedShapes = shapes.filter((shape) => shape.id !== id);
+        setShapes(updatedShapes);
+        localStorage.setItem('shapes', JSON.stringify(updatedShapes));
     };
 
     const handleRenderAll = (shapes: Shape[]) => {
