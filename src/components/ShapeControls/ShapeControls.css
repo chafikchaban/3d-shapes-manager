@@ -1,0 +1,14 @@
+.canvas-controls-container {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1;
+    background-color: white;
+    padding: 2rem;
+}
+
+.controls-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}

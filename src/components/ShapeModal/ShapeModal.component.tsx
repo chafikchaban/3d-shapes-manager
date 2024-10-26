@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Box, Button, TextField, MenuItem, Typography, Select } from '@mui/material';
-import { Shape } from '../../model';
+import { Shape, ShapeType } from '../../model';
 import './ShapeModal.css'
+import { getDefaultShapeDimensions } from '../../utils';
 
 export interface ShapeModalProps {
     onSave: (shape: Omit<Shape, 'id'>) => void;
@@ -9,14 +10,21 @@ export interface ShapeModalProps {
 
 const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
     const [open, setOpen] = useState(false);
-    const [shapeData, setShapeData] = useState<Omit<Shape, 'id'> | null>(null);
+    const [shapeData, setShapeData] = useState<Partial<Omit<Shape, 'id'>> | null>(null);
     const [submitted, setSubmitted] = useState(false);
 
     const handleSave = () => {
         setSubmitted(true);
 
         if (shapeData?.name && shapeData.type) {
-            onSave(shapeData);
+            const dimensions = getDefaultShapeDimensions(shapeData.type)
+            const newShape: Omit<Shape, 'id'> = {
+                type: shapeData.type,
+                name: shapeData.name,
+                dimensions
+            }
+
+            onSave(newShape);
             setOpen(false);
         }
     };
@@ -44,7 +52,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
                         fullWidth
                         displayEmpty
                         value={shapeData?.type || ''}
-                        onChange={(e) => setShapeData({ ...shapeData, type: e.target.value })}
+                        onChange={(e) => setShapeData({ ...shapeData, type: e.target.value as ShapeType })}
                         error={submitted && !shapeData?.type}
                     >
                         <MenuItem value="" disabled>Select a shape</MenuItem>
