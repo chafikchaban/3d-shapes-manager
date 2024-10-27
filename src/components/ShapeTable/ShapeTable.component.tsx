@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, Button, TableContainer, Paper, Box, Typography } from '@mui/material';
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import { Shape } from '../../model';
 import ShapeModal, { ShapeModalProps } from '../ShapeModal/ShapeModal.component';
 import styles from './ShapeTable.module.css'
@@ -31,10 +33,10 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
           <TableCell align='center'>{shape.name}</TableCell>
           <TableCell align='center'>{shape.type}</TableCell>
           <TableCell className={styles.actionsContainer}>
-            <Button variant="outlined" color="error" onClick={() => onDeleteShape(shape.id)}>
+            <Button variant="outlined" color="error" endIcon={<DeleteIcon />} onClick={() => onDeleteShape(shape.id)}>
               Delete
             </Button>
-            <Button variant="contained" onClick={() => onRenderSingle(shape)}>
+            <Button variant="contained" endIcon={<VisibilityTwoToneIcon />} onClick={() => onRenderSingle(shape)}>
               Render
             </Button>
           </TableCell>
@@ -47,20 +49,20 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
     <div className={styles.container}>
       <Box className={styles.header}>
         <ShapeModal onSave={onSave} />
-        <Button variant="contained" disabled={!shapes.length} onClick={() => onRender(shapes)}>
+        <Button variant="contained" disabled={!shapes.length} endIcon={<VisibilityTwoToneIcon />} onClick={() => onRender(shapes)}>
           Render
         </Button>
       </Box>
       {!shapes.length ?
         renderEmptyState() :
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className={styles.tableContainer}>
           <Table className={styles.table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align='center'>ID</TableCell>
-                <TableCell align='center'>Name</TableCell>
-                <TableCell align='center'>Type</TableCell>
-                <TableCell align='center'>Action</TableCell>
+                <TableCell align='center' className={styles.tableHeaderText}>ID</TableCell>
+                <TableCell align='center' className={styles.tableHeaderText}>Name</TableCell>
+                <TableCell align='center' className={styles.tableHeaderText}>Type</TableCell>
+                <TableCell align='center' className={styles.tableHeaderText}>Action</TableCell>
               </TableRow>
             </TableHead>
             {renderData()}

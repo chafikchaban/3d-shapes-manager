@@ -191,7 +191,7 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
     };
 
     return (
-        <div style={{ width: '100vw', position: 'relative', top: 0, left: 0 }}>
+        <div className={styles.container}>
             <IconButton aria-label="close" className={styles.closeIcon} onClick={onClose}>
                 <CloseIcon />
             </IconButton>

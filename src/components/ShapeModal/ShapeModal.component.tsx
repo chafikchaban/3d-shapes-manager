@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Box, Button, TextField, MenuItem, Typography, Select } from '@mui/material';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+
 import { Shape, ShapeType } from '../../model';
 import { getDefaultShapeDimensions } from '../../utils';
 import styles from './ShapeModal.module.css'
@@ -31,7 +33,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
 
     return (
         <>
-            <Button variant="contained" onClick={() => setOpen(true)}>Create</Button>
+            <Button variant="contained" endIcon={<AddRoundedIcon />} onClick={() => setOpen(true)}>Create</Button>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <Box className={styles.container}>
                     <Typography variant="h4" component="h4" textAlign={'center'}>
@@ -65,7 +67,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
                     {/* action buttons */}
                     <Box className={styles.buttonsContainer}>
                         <Button variant="contained" onClick={handleSave}>Create</Button>
-                        <Button variant="contained" onClick={() => setOpen(false)}>Cancel</Button>
+                        <Button variant="outlined" color="error" onClick={() => setOpen(false)}>Cancel</Button>
                     </Box>
                 </Box>
             </Modal>
