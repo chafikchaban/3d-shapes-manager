@@ -10,5 +10,7 @@ export default defineConfig({
     globals: true,
     // run tests in jsdom environment
     environment: "jsdom",
+    // global test setup
+    setupFiles: "/.tests/setup.ts",
   },
 })
