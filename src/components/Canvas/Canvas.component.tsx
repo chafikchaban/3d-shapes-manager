@@ -27,14 +27,16 @@ import styles from './Canvas.module.css';
 interface CanvasProps {
     shapes: Shape[];
     onClose: () => void;
+    onShapeUpdate(shape: Shape): void;
 }
 
-const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
+const Canvas: React.FC<CanvasProps> = ({ shapes, onClose, onShapeUpdate }) => {
     const canvasRef = useRef<HTMLDivElement>(null);
     const [selectedObject, setSelectedObject] = useState<Mesh | null>(null);
     const [position, setPosition] = useState<ShapePosition>({ x: 0, y: 0, z: 0 });
     const [dimensions, setDimensions] = useState<Partial<ShapeDimensions>>({});
     const [selectedName, setSelectedName] = useState<string | null>(null);
+    const [selectedId, setSelectedId] = useState<number | null>(null);
 
     useEffect(() => {
         const currentCanvasRef = canvasRef.current;
@@ -100,6 +102,7 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
                 const selectedMesh = intersects[0].object as Mesh;
                 setSelectedObject(selectedMesh);
                 setSelectedName(shapes[meshObjects.indexOf(selectedMesh)].name);
+                setSelectedId(shapes[meshObjects.indexOf(selectedMesh)].id);
                 const { x, y, z } = selectedMesh.position;
                 setPosition({ x, y, z });
 
@@ -187,6 +190,14 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
 
             // Update the dimensions state
             setDimensions((prev) => ({ ...prev, [axis]: value }));
+
+            if(selectedId) {
+                const selectedShape: Shape = shapes.find(el => el.id === selectedId) as Shape
+                onShapeUpdate({
+                    ...selectedShape,
+                    dimensions: dimensions
+                })
+            }
         }
     };
 
