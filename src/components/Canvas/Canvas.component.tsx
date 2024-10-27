@@ -109,6 +109,8 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose, onShapeUpdate }) => {
                 // Set dimensions based on selected shape's bounding box
                 const meshDimensions = getMeshDimensions(selectedMesh);
                 setDimensions(meshDimensions);
+            } else {
+                setSelectedObject(null)
             }
         };
 
