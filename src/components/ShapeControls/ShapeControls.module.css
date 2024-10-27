@@ -1,6 +1,6 @@
 .controlsContainer {
     position: absolute;
-    top: 2rem;
+    top: 4rem;
     left: 2rem;
     z-index: 1;
     background-color: var(--background-color) !important;
@@ -36,7 +36,7 @@
 @media (max-width: 480px) {
     .controlsContainer {
         top: auto;
-        bottom: 0.5rem;
+        bottom: 1rem;
         left: 0.5rem;
         right: 0.5rem;
         padding: 0.5rem;
