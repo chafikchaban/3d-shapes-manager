@@ -28,7 +28,7 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
   const renderData = useCallback(() => (
     <TableBody>
       {shapes.map(shape => (
-        <TableRow key={shape.name}>
+        <TableRow key={shape.id}>
           <TableCell align='center'>{shape.id}</TableCell>
           <TableCell align='center'>{shape.name}</TableCell>
           <TableCell align='center'>{shape.type}</TableCell>

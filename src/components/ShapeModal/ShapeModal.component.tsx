@@ -27,14 +27,20 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
             }
 
             onSave(newShape);
-            setOpen(false);
+            handleClose();
         }
     };
+
+    const handleClose = () => {
+        setOpen(false);
+        setShapeData(null);
+        setSubmitted(false);
+    }
 
     return (
         <>
             <Button variant="contained" endIcon={<AddRoundedIcon />} onClick={() => setOpen(true)}>Create</Button>
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal open={open} onClose={handleClose}>
                 <Box className={styles.container}>
                     <Typography variant="h5" component="h5" textAlign={'center'} className={styles.title}>
                         Create a shape
@@ -67,7 +73,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
                     {/* action buttons */}
                     <Box className={styles.buttonsContainer}>
                         <Button variant="contained" onClick={handleSave}>Create</Button>
-                        <Button variant="outlined" color="error" onClick={() => setOpen(false)}>Cancel</Button>
+                        <Button variant="outlined" color="error" onClick={handleClose}>Cancel</Button>
                     </Box>
                 </Box>
             </Modal>
