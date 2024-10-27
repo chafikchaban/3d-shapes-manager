@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow, Button, TableContainer, Paper, Box, Typography } from '@mui/material';
 import { Shape } from '../../model';
 import ShapeModal, { ShapeModalProps } from '../ShapeModal/ShapeModal.component';
-import './ShapeTable.css'
+import styles from './ShapeTable.module.css'
 
 interface ShapeTableProps extends ShapeModalProps {
   shapes: Shape[];
@@ -16,7 +16,7 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
 
   const renderEmptyState = () => {
     return (
-      <Paper className='table-empty'>
+      <Paper className={styles.emptyTable}>
         <Typography variant="h6" >No data</Typography>
         <Typography variant="subtitle1">Seems like you have no shapes yet. Start by creating one!</Typography>
       </Paper>
@@ -30,7 +30,7 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
           <TableCell align='center'>{shape.id}</TableCell>
           <TableCell align='center'>{shape.name}</TableCell>
           <TableCell align='center'>{shape.type}</TableCell>
-          <TableCell className='action-buttons-container'>
+          <TableCell className={styles.actionsContainer}>
             <Button variant="outlined" color="error" onClick={() => onDeleteShape(shape.id)}>
               Delete
             </Button>
@@ -44,8 +44,8 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
   ), [onDeleteShape, onRenderSingle, shapes])
 
   return (
-    <div className='table-container'>
-      <Box className={'header-container'}>
+    <div className={styles.container}>
+      <Box className={styles.header}>
         <ShapeModal onSave={onSave} />
         <Button variant="contained" disabled={!shapes.length} onClick={() => onRender(shapes)}>
           Render
@@ -54,7 +54,7 @@ const ShapeTable: React.FC<ShapeTableProps> = ({ shapes, onSave, onDeleteShape, 
       {!shapes.length ?
         renderEmptyState() :
         <TableContainer component={Paper}>
-          <Table className='table' aria-label="simple table">
+          <Table className={styles.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align='center'>ID</TableCell>

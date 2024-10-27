@@ -1,11 +1,11 @@
-.table-container {
+.container {
     padding-top: 12rem;
     padding-bottom: 12rem;
     padding-left: 24rem;
     padding-right: 24rem;
 }
 
-.header-container {
+.header {
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
@@ -13,7 +13,7 @@
     margin-bottom: 1rem;
 }
 
-.table-empty {
+.emptyTable {
     padding: 2rem;
     text-align: center;
 }
@@ -22,7 +22,7 @@
     min-width: 650px;
 }
 
-.action-buttons-container {
+.actionsContainer {
     display: flex !important;
     gap: 1rem;
     justify-content: center;

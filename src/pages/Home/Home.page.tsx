@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import './Home.css'
 import { Shape } from '../../model';
 import ShapeTable from '../../components/ShapeTable/ShapeTable.component';
 import Canvas from '../../components/Canvas/Canvas.component';
+import styles from './Home.module.css'
 
 
 export const HomePage: React.FC = () => {
@@ -46,7 +46,7 @@ export const HomePage: React.FC = () => {
     };
 
     return (
-        <div className='page-container'>
+        <div className={styles.container}>
             {renderShapes ? (
                 <Canvas shapes={renderShapes} onClose={handleCloseCanvas} />
             ) : (

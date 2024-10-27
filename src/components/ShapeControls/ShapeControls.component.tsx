@@ -1,6 +1,6 @@
 import { Box, Paper, TextField, Typography } from "@mui/material";
 import { ShapeDimensions, ShapePosition } from "../../model";
-import './ShapeControls.css';
+import styles from './ShapeControls.module.css';
 
 interface ShapeControlsProps {
     name: string | null;
@@ -13,10 +13,10 @@ interface ShapeControlsProps {
 const ShapeControls: React.FC<ShapeControlsProps> = ({ name, position, dimensions, handlePositionChange, handleDimensionsChange }) => {
 
     return (
-        <Paper className={'canvas-controls-container'}>
+        <Paper className={styles.controlsContainer}>
             <Typography variant="h6" color="red">{name}</Typography>
             <Typography variant="subtitle1">Position:</Typography>
-            <Box className={'controls-row'}>
+            <Box className={styles.row}>
                 <TextField
                     label="X"
                     type="number"
@@ -38,7 +38,7 @@ const ShapeControls: React.FC<ShapeControlsProps> = ({ name, position, dimension
             </Box>
 
             <Typography variant="subtitle1">Dimensions:</Typography>
-            <Box className={'controls-row'}>
+            <Box className={styles.row}>
                 {dimensions.width && <TextField
                     label="Width"
                     type="number"

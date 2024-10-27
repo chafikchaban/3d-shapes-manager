@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Box, Button, TextField, MenuItem, Typography, Select } from '@mui/material';
 import { Shape, ShapeType } from '../../model';
-import './ShapeModal.css'
 import { getDefaultShapeDimensions } from '../../utils';
+import styles from './ShapeModal.module.css'
 
 export interface ShapeModalProps {
     onSave: (shape: Omit<Shape, 'id'>) => void;
@@ -33,7 +33,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
         <>
             <Button variant="contained" onClick={() => setOpen(true)}>Create</Button>
             <Modal open={open} onClose={() => setOpen(false)}>
-                <Box className={'container'}>
+                <Box className={styles.container}>
                     <Typography variant="h4" component="h4" textAlign={'center'}>
                         Create
                     </Typography>
@@ -43,11 +43,11 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
                         name="name"
                         value={shapeData?.name}
                         onChange={(e) => setShapeData({ ...shapeData, name: e.target.value })}
-                        className='field'
+                        className={styles.field}
                         error={submitted && !shapeData?.name}
                     />
                     <Select
-                        className='field'
+                        className={styles.field}
                         name="type"
                         fullWidth
                         displayEmpty
@@ -63,7 +63,7 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
                     </Select>
 
                     {/* action buttons */}
-                    <Box className={'buttons-container'}>
+                    <Box className={styles.buttonsContainer}>
                         <Button variant="contained" onClick={handleSave}>Create</Button>
                         <Button variant="contained" onClick={() => setOpen(false)}>Cancel</Button>
                     </Box>

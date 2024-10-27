@@ -20,9 +20,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 import { Shape, ShapeDimensions, ShapePosition } from '../../model';
-import './Canvas.css';
 import ShapeControls from '../ShapeControls/ShapeControls.component';
 import { getMeshDimensions } from '../../utils';
+import styles from './Canvas.module.css';
 
 interface CanvasProps {
     shapes: Shape[];
@@ -192,7 +192,7 @@ const Canvas: React.FC<CanvasProps> = ({ shapes, onClose }) => {
 
     return (
         <div style={{ width: '100vw', position: 'relative', top: 0, left: 0 }}>
-            <IconButton aria-label="close" className='close-icon' onClick={onClose}>
+            <IconButton aria-label="close" className={styles.closeIcon} onClick={onClose}>
                 <CloseIcon />
             </IconButton>
             {selectedObject && position && (

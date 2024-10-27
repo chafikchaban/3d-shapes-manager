@@ -10,7 +10,7 @@
     margin-top: 1rem;
 }
 
-.buttons-container {
+.buttonsContainer {
     display: flex !important;
     gap: 1rem;
     justify-content: flex-end;
