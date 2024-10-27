@@ -36,8 +36,8 @@ const ShapeModal: React.FC<ShapeModalProps> = ({ onSave }) => {
             <Button variant="contained" endIcon={<AddRoundedIcon />} onClick={() => setOpen(true)}>Create</Button>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <Box className={styles.container}>
-                    <Typography variant="h4" component="h4" textAlign={'center'}>
-                        Create
+                    <Typography variant="h5" component="h5" textAlign={'center'} className={styles.title}>
+                        Create a shape
                     </Typography>
                     <TextField
                         fullWidth

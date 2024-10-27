@@ -1,6 +1,7 @@
 .container {
     padding: 1rem 2rem;
     max-width: 1200px;
+    margin-top: 8rem;
 }
 
 .header {
@@ -11,7 +12,7 @@
     margin-bottom: 2rem;
 }
 
-.tableHeaderText{
+.tableHeaderText {
     font-weight: 600 !important;
 }
 
@@ -40,6 +41,7 @@
 @media (max-width: 768px) {
     .container {
         padding: 6rem 2rem;
+        margin-top: 4rem;
     }
 
     .header {

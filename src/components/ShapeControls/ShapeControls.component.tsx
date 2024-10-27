@@ -14,7 +14,7 @@ const ShapeControls: React.FC<ShapeControlsProps> = ({ name, position, dimension
 
     return (
         <Paper className={styles.controlsContainer}>
-            <Typography variant="h6" color="red">{name}</Typography>
+            <Typography variant="h6" color="primary">{name}</Typography>
             <Typography variant="subtitle1">Position:</Typography>
             <Box className={styles.row}>
                 <TextField

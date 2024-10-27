@@ -6,12 +6,7 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 4rem;
-}
-
-@media (max-width: 480px) {
-  .container {
-  padding-top: 2rem;
-  }
+  background-color: var(--background-color) !important;
+  margin-top: 5rem;
 }
 

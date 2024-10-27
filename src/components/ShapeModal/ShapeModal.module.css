@@ -2,10 +2,15 @@
     width: 400px;
     padding: 1rem;
     margin: auto;
-    background-color: white;
+    background-color: var(--background-color) !important;
     margin-top: 10%;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    color: var(--primary-color);
+    margin-bottom: 2rem !important;
 }
 
 .field {
